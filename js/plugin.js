@@ -11,11 +11,20 @@ $(function () {
     $('.thumbnails img:last').css({
         'margin-right':0
         });
+        setInterval(function(){ 
+            $('.master-img img').hide();
+            $('.thumbnails .selected').next().click();
+            if($('.thumbnails .selected').is(':last-child')){
+                $('.thumbnails img').eq(0).click();
+            }
+         }, 3000);
     
     $('.thumbnails img').click(function () {
      $(this).addClass('selected').siblings().removeClass('selected');
      $('.master-img img').hide().attr('src', $(this).attr('src')).fadeIn(200);
  });
+
+
     $('.master-img .fa-chevron-right').click(function(){
         if($('.thumbnails .selected').is(':last-child')){
             $('.thumbnails img').eq(0).click();
